@@ -1,0 +1,121 @@
+// linked list
+
+class LinkedListNode {
+  constructor(value, next) {
+    this.value = value;
+    this.next = next;
+  }
+
+  addNext(value) {
+    this.next = value;
+  }
+
+  printAll() {
+    node = this;
+    console.log("printing all nodes");
+    while (node) {
+      console.log(node.value);
+      node = node.next;
+    }
+  }
+}
+
+// instantiate a new node
+const a = new LinkedListNode("a");
+const b = new LinkedListNode("b");
+const c = new LinkedListNode("c");
+
+const e = new LinkedListNode("e");
+
+// insert new nodes at end
+a.addNext(b);
+b.addNext(c);
+
+// iterate over linked list
+let node = a;
+while (node) {
+  console.log(node.value);
+  node = node.next;
+}
+
+// insert new node at beginning
+const d = new LinkedListNode("d");
+d.addNext(a);
+
+// insert new node in the middle (after b)
+node = d;
+while (node) {
+  if (node.value == "b") {
+    node.addNext(new LinkedListNode("g", node.next));
+  }
+  node = node.next;
+}
+
+d.printAll();
+
+// delete a node (g)
+node = d;
+nodeValueToDelete = "g";
+while (node) {
+  if (node.next?.value == nodeValueToDelete) {
+    node.next = node.next.next;
+  }
+  node = node.next;
+}
+
+// count number of nodes
+count = 0;
+node = d;
+while (node) {
+  count++;
+  node = node.next;
+}
+count;
+
+// find if in list
+let aInList = null;
+let zInList = null;
+node = d;
+
+while (node) {
+  if (node.value == "a") {
+    aInList = true;
+  }
+  if (node.value == "z") zInList = true;
+  node = node.next;
+}
+
+aInList;
+zInList;
+
+
+// contains a cycle - v
+node = d;
+
+const hasCycleViaSet = (head) => {
+  node = head;
+  const set = new Set();
+  while(node) {
+    console.log(node)
+    if(!node.next) {
+      return false;
+    }
+    if(set.has(node)) {
+      return true;
+    }
+    set.add(node)
+    node = node.next
+  }
+}
+
+const hasCycleViaLapped(head) => {
+  node = head
+  while(node) {
+
+  }
+
+
+}
+
+console.log(hasCycleViaSet(d))
+
